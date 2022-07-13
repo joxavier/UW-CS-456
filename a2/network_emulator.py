@@ -1,3 +1,4 @@
+from xmlrpc.client import boolean
 from packet import Packet
 import random
 import time
@@ -5,21 +6,23 @@ from queue import Queue
 import threading
 import argparse
 import socket
+import sys
+
 # initialize to dumby values for sanity checking purposes
-max_delay = None # max delay a packet can be delayed by in milliseconds
+max_delay = sys.argv[7] # max delay a packet can be delayed by in milliseconds
 
-forward_recv_port = None # the port to listen on to get messages from the sender
-backward_recv_port = None # emulator's receiving UDP port from receiver
+forward_recv_port = int(sys.argv[1]) # the port to listen on to get messages from the sender
+backward_recv_port = int(sys.argv[4]) # emulator's receiving UDP port from receiver
 
-receiver_addr = None # receiver's network address
-receiver_recv_port = None # receiver's receiving UDP port
+receiver_addr = sys.argv[2] # receiver's network address
+receiver_recv_port = int(sys.argv[3]) # receiver's receiving UDP port
 
-sender_addr = None # sender's network address
-sender_recv_port = None # the sender's receiving UDP port number
+sender_addr = sys.argv[5] # sender's network address
+sender_recv_port = int(sys.argv[6]) # the sender's receiving UDP port number
 
-prob_discard = None # the probability a packet is discarded
+prob_discard = sys.argv[8] # the probability a packet is discarded
 
-verbose = False 
+verbose = boolean(sys.argv[9])
 
 data_buff = Queue()
 ack_buff = Queue()
