@@ -20,7 +20,8 @@ char_limit = 500
 packets = [] 
 total_packets = 0
 win_size = 1 
-pack_size = 512 
+pack_size = 512
+waking = False 
 
 
 
