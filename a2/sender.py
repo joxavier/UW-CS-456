@@ -85,7 +85,7 @@ def receiver():
         
 
 recthread = threading.Thread(target=receiver, args=())
-recthread.dameon = True
+recthread.setDaemon(True)
 recthread.start()
     
 while (confirmed < total_packets):
