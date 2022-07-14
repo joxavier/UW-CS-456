@@ -33,7 +33,7 @@ while(True):
     if (not pack):
         break
     else:
-        packet = Packet.decode(pack)
+        packet = Packet.decode(Packet(pack))
         
     #snum = Packet.decode(packet)[1]
     packet_type = packet[0]
