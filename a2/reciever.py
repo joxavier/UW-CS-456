@@ -45,11 +45,11 @@ while(True):
     if (packet_seq_num == expected): # got the next packet
         if (packet_type == 2): # EOT packet
             # send EOT and exit
-            sock.sendto(Packet.encode(Packet(2, packet_seq_num), (haddr, dport)))
+            sock.sendto(Packet.encode(Packet(2, packet_seq_num, 0, ""), (haddr, dport)))
             break
         elif (packet_type == 1): # data packet
             # send ACK, record snum, increment expected
-            sock.sendto(Packet.encode(Packet(2, packet_seq_num), (haddr, dport)))
+            sock.sendto(Packet.encode(Packet(0, packet_seq_num, 0, "",), (haddr, dport)))
             confirmed = packet_seq_num
             expected = confirmed + 1
             # deal with new data
