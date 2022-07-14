@@ -40,7 +40,7 @@ except IOError:
 
 packet_data = payload_file.read(char_limit) 
 while(packet_data):
-    packets.append(Packet(1, total_packets, char_limit, packet_data))
+    packets.append(Packet(1, total_packets, 1, packet_data))
     total_packets += 1
     packet_data = payload_file.read(char_limit)
 
