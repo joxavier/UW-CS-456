@@ -1,62 +1,62 @@
 from packet import Packet
 import socket, sys
 
-# save values needed to talk to host emulator
-haddr = sys.argv[1] # network host address
-dport = int(sys.argv[2]) # dest port on host
-rport = int(sys.argv[3]) # recv port for this app
-received = sys.argv[4] # filename to be used to record recvd data
+# initalize logfiles
+arr_log = open("arrival.log", "a")
 
-# try opening the file
+# configure variables
+# user inputed
+net_host_addr = sys.argv[1]
+net_rcv_port = int(sys.argv[2])
+local_rcv_port = int(sys.argv[3])
+output_file = sys.argv[4]
+
+# global
+expected = 0 
+confirmed = None 
+pack_size = 1024 
+
+# open output file
 try:
-    msgfile = open(received, 'a')
+    payload_file = open(output_file, 'a')
 except IOError:
-    sys.stderr.write("Failed to open file to write data. Stop being terrible at life pls")
+    sys.stderr.write("ERROR: cannot write to output file.")
     raise SystemExit
 
-# logfile (received packets)
-# at end call things.close()
-arrlog = open("arrival.log", "a")
+# initiate socket
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind(('', local_rcv_port))
 
-# some vars needed for execution
-expected = 0 # next packet # expected
-confirmed = None # last confirmed packet
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # socket!
-sock.bind(('', rport)) # set socket to recv on rport
-pack_size = 512 # packet size in bytes
-
-# let's get this bread! I mean packets. yes, I re-used that joke.
+# recieve packets
 while(True):
-    pack, addr = sock.recvfrom(pack_size)
-    
-    # if we can't get a packet
-    if (not pack):
-        break
-    else:
-        packet = Packet.decode(Packet(pack))
-        
-    #snum = Packet.decode(packet)[1]
+    pack = sock.recvfrom(pack_size)[0]
+    packet = Packet.decode(Packet(pack))
     packet_type = packet[0]
     packet_seq_num = packet[1]
     packet_len = packet[2]
     packet_data = packet[3]
-    arrlog.write(str(packet_seq_num) + "\n")
+
+    # log recieved packet
+    arr_log.write(str(packet_seq_num) + "\n")
     
-    if (packet_seq_num == expected): # got the next packet
-        if (packet_type == 2): # EOT packet
-            # send EOT and exit
-            sock.sendto(Packet.encode(Packet(2, packet_seq_num, 0, "")), (haddr, dport))
+    # check packet sequence
+    if (packet_seq_num == expected): 
+        if (packet_type == 2): # EOT
+            #return EOT
+            sock.sendto(Packet.encode(Packet(2, packet_seq_num, 0, "")), (net_host_addr, net_rcv_port))
             break
-        elif (packet_type == 1): # data packet
-            # send ACK, record snum, increment expected
-            sock.sendto(Packet.encode(Packet(0, packet_seq_num, 0, "")), (haddr, dport))
+        elif (packet_type == 1): # Data
+            # write payload to file, and return ACK
+            payload_file.write(packet_data)
+            sock.sendto(Packet.encode(Packet(0, packet_seq_num, 0, "")), (net_host_addr, net_rcv_port))
+            
+            # increment counter
             confirmed = packet_seq_num
             expected = confirmed + 1
-            # deal with new data
-            msgfile.write(packet_data)
             
-    elif (confirmed): # got wrong packet, send confirmation only of last good packet
-        sock.sendto(Packet.encode(Packet(0, confirmed, 0, "")), (haddr, dport))
+    elif (confirmed):
+        # unexpected sequence number, return last correct ACK
+        sock.sendto(Packet.encode(Packet(0, confirmed, 0, "")), (net_host_addr, net_rcv_port))
         
 
-arrlog.close()
+arr_log.close()

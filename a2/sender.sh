@@ -20,6 +20,11 @@
 #java client "$@"
 
 #For Python implementation
+if [ "$#" -ne 5 ];
+then
+  echo "Program takes 5 parameters, <host  address  of  the  network  emulator>,  <UDP  port  number  used  by  the  emulator  to receive data from the sender>, <UDP port number used by the sender to receive ACKs from the emulator>, <timeout interval in units of millisecond> and <name of the file to be transferred>"
+  exit 1
+fi
 python3 sender.py "$@"
 
 #For Ruby implementation
