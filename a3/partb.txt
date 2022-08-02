@@ -1,0 +1,131 @@
+POX 0.7.0 (gar) / Copyright 2011-2020 James McCauley, et al.
+INFO:host_tracker:host_tracker ready
+DEBUG:core:POX 0.7.0 (gar) going up...
+DEBUG:core:Running on CPython (3.6.9/Jan 26 2021 15:33:00)
+DEBUG:core:Platform is Linux-4.15.0-112-generic-x86_64-with-Ubuntu-18.04-bionic
+WARNING:version:Support for Python 3 is experimental.
+INFO:core:POX 0.7.0 (gar) is up.
+DEBUG:openflow.of_01:Listening on 0.0.0.0:6633
+Ready.
+POX> INFO:openflow.of_01:[00-00-00-00-00-01 2] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-01
+DEBUG:forwarding.l2_learning:Connection [00-00-00-00-00-01 2]
+INFO:openflow.of_01:[00-00-00-00-00-06 3] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-06
+DEBUG:forwarding.l2_learning:Connection [00-00-00-00-00-06 3]
+INFO:openflow.of_01:[00-00-00-00-00-03 4] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-03
+DEBUG:forwarding.l2_learning:Connection [00-00-00-00-00-03 4]
+INFO:openflow.of_01:[00-00-00-00-00-02 5] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-02
+DEBUG:forwarding.l2_learning:Connection [00-00-00-00-00-02 5]
+INFO:openflow.of_01:[00-00-00-00-00-07 6] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-07
+DEBUG:forwarding.l2_learning:Connection [00-00-00-00-00-07 6]
+INFO:openflow.of_01:[00-00-00-00-00-04 7] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-04
+DEBUG:forwarding.l2_learning:Connection [00-00-00-00-00-04 7]
+INFO:openflow.of_01:[00-00-00-00-00-05 8] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-05
+DEBUG:forwarding.l2_learning:Connection [00-00-00-00-00-05 8]
+INFO:openflow.discovery:link detected: 00-00-00-00-00-02.3 -> 00-00-00-00-00-01.1
+INFO:openflow.discovery:link detected: 00-00-00-00-00-02.1 -> 00-00-00-00-00-03.3
+INFO:openflow.discovery:link detected: 00-00-00-00-00-03.3 -> 00-00-00-00-00-02.1
+INFO:openflow.discovery:link detected: 00-00-00-00-00-04.3 -> 00-00-00-00-00-02.2
+INFO:openflow.discovery:link detected: 00-00-00-00-00-02.2 -> 00-00-00-00-00-04.3
+INFO:openflow.discovery:link detected: 00-00-00-00-00-05.3 -> 00-00-00-00-00-01.2
+INFO:openflow.discovery:link detected: 00-00-00-00-00-05.1 -> 00-00-00-00-00-06.3
+INFO:openflow.discovery:link detected: 00-00-00-00-00-05.2 -> 00-00-00-00-00-07.3
+INFO:openflow.discovery:link detected: 00-00-00-00-00-07.3 -> 00-00-00-00-00-05.2
+INFO:openflow.discovery:link detected: 00-00-00-00-00-06.3 -> 00-00-00-00-00-05.1
+INFO:openflow.discovery:link detected: 00-00-00-00-00-01.1 -> 00-00-00-00-00-02.3
+INFO:openflow.discovery:link detected: 00-00-00-00-00-01.2 -> 00-00-00-00-00-05.3
+DEBUG:openflow.of_01:1 connection aborted
+
+INFO:host_tracker:Learned 3 1 00:00:00:00:00:01
+INFO:host_tracker:Learned 3 1 00:00:00:00:00:01 got IP 10.0.0.1
+INFO:host_tracker:Learned 6 1 00:00:00:00:00:05
+INFO:host_tracker:Learned 6 1 00:00:00:00:00:05 got IP 10.0.0.5
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:05.1 -> 00:00:00:00:00:01.3
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:05.1 -> 00:00:00:00:00:01.3
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:05.2 -> 00:00:00:00:00:01.1
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:05.3 -> 00:00:00:00:00:01.1
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:05.3 -> 00:00:00:00:00:01.1
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:01.1 -> 00:00:00:00:00:05.3
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:01.1 -> 00:00:00:00:00:05.3
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:01.1 -> 00:00:00:00:00:05.2
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:01.3 -> 00:00:00:00:00:05.1
+DEBUG:forwarding.l2_learning:installing flow for 00:00:00:00:00:01.3 -> 00:00:00:00:00:05.1
+
+
+
+
+
+
+#ii
+
+mininet> h1 ping h5
+PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=21.4 ms
+64 bytes from 10.0.0.5: icmp_seq=2 ttl=64 time=0.053 ms
+64 bytes from 10.0.0.5: icmp_seq=3 ttl=64 time=0.045 ms
+64 bytes from 10.0.0.5: icmp_seq=4 ttl=64 time=0.082 ms
+64 bytes from 10.0.0.5: icmp_seq=5 ttl=64 time=0.044 ms
+
+
+
+#iii
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s1
+ cookie=0x0, duration=9.259s, table=0, n_packets=6, n_bytes=246, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=9.217s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s2
+ cookie=0x0, duration=19.009s, table=0, n_packets=13, n_bytes=533, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=18.967s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s3
+ cookie=0x0, duration=22.160s, table=0, n_packets=5, n_bytes=205, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=22.118s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s4
+ cookie=0x0, duration=25.120s, table=0, n_packets=6, n_bytes=246, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=25.081s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s5
+ cookie=0x0, duration=26.991s, table=0, n_packets=17, n_bytes=697, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=26.949s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s6
+ cookie=0x0, duration=29.583s, table=0, n_packets=7, n_bytes=287, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=29.555s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s7
+ cookie=0x0, duration=31.776s, table=0, n_packets=7, n_bytes=287, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=31.735s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s1
+ cookie=0x0, duration=9.828s, table=0, n_packets=4, n_bytes=280, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:05,dl_dst=00:00:00:00:00:01 actions=output:"s1-eth1"
+ cookie=0x0, duration=9.823s, table=0, n_packets=3, n_bytes=238, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:05 actions=output:"s1-eth2"
+ cookie=0x0, duration=88.414s, table=0, n_packets=38, n_bytes=1558, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=88.372s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s2
+ cookie=0x0, duration=13.077s, table=0, n_packets=4, n_bytes=280, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:05,dl_dst=00:00:00:00:00:01 actions=output:"s2-eth1"
+ cookie=0x0, duration=13.074s, table=0, n_packets=3, n_bytes=238, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:05 actions=output:"s2-eth3"
+ cookie=0x0, duration=91.620s, table=0, n_packets=57, n_bytes=2337, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=91.578s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s3
+ cookie=0x0, duration=15.201s, table=0, n_packets=4, n_bytes=280, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:05,dl_dst=00:00:00:00:00:01 actions=output:"s3-eth1"
+ cookie=0x0, duration=15.201s, table=0, n_packets=3, n_bytes=238, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:05 actions=output:"s3-eth3"
+ cookie=0x0, duration=93.746s, table=0, n_packets=20, n_bytes=820, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=93.704s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s4
+ cookie=0x0, duration=95.888s, table=0, n_packets=20, n_bytes=820, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=95.849s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s5
+ cookie=0x0, duration=18.951s, table=0, n_packets=4, n_bytes=280, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:05,dl_dst=00:00:00:00:00:01 actions=output:"s5-eth3"
+ cookie=0x0, duration=18.942s, table=0, n_packets=3, n_bytes=238, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:05 actions=output:"s5-eth1"
+ cookie=0x0, duration=97.490s, table=0, n_packets=59, n_bytes=2419, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=97.448s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s6
+ cookie=0x0, duration=21.081s, table=0, n_packets=4, n_bytes=280, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:05,dl_dst=00:00:00:00:00:01 actions=output:"s6-eth3"
+ cookie=0x0, duration=21.069s, table=0, n_packets=3, n_bytes=238, hard_timeout=1800, priority=65001,dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:05 actions=output:"s6-eth1"
+ cookie=0x0, duration=99.695s, table=0, n_packets=21, n_bytes=861, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=99.667s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+mininet@mininet-vm:~$ sudo ovs-ofctl dump-flows s7
+ cookie=0x0, duration=104.368s, table=0, n_packets=22, n_bytes=902, priority=65000,dl_dst=01:23:20:00:00:01,dl_type=0x88cc actions=CONTROLLER:65535
+ cookie=0x0, duration=104.327s, table=0, n_packets=0, n_bytes=0, priority=32769,arp,dl_dst=02:00:00:00:be:ef actions=CONTROLLER:65535
+
